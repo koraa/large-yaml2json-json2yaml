@@ -1,4 +1,4 @@
-# Converting large json & yaml files without eating all your ram
+# Converting giant json & yaml files without eating your ram
 
 This project provides the command line utilities yaml2json
 and json2yaml, written in c++.
@@ -8,6 +8,8 @@ directly represented in json. Advanced yaml features, like
 anchors, NaN, Infinity or tags are not supported, but
 a sensible, configurable handling of those may be added in
 the future.
+
+*Stability*: Stable – This project has been in use for three years without a majour bug.
 
 ## Motivation
 
@@ -75,10 +77,6 @@ pv < myfile.json | json2yaml > myfile.yaml
 yaml2json < myfile.yaml | less
 json2yaml < myfile.json | less
 ```
-
-## Status
-
-Stable: This project has been in use for three years without a majour bug.
 
 # LICENSE (Revised BSD)
 
