@@ -18,20 +18,20 @@ Install the required packages:
 
 Make sure you have the git submodules checked out:
 
-```
+```sh
 git submodule init && git submodule sync && git submodule update
 ```
 
 And then compile the code:
 
-```
+```sh
 make
 ```
 
 To install copy the binaries to /usr/local/bin or execute this command
 which will perform the copy for you.
 
-```
+```sh
 sudo make install
 ```
 
@@ -40,7 +40,7 @@ default prefix is `/usr/local.`aaaa
 
 ## Usage
 
-```
+```sh
 # Convert between yaml & json
 yaml2json < myfile.yaml > myfile.json
 json2yaml < myfile.json > myfile.yaml
