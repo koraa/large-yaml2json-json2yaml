@@ -1,4 +1,4 @@
-# Constant memory yaml2json and json2yaml in C++
+# Converting large json & yaml files without eating all your ram
 
 This project provides the command line utilities yaml2json
 and json2yaml, written in c++.
@@ -8,6 +8,27 @@ directly represented in json. Advanced yaml features, like
 anchors, NaN, Infinity or tags are not supported, but
 a sensible, configurable handling of those may be added in
 the future.
+
+## Motivation
+
+Most of the yaml/json conversion tools I found where written
+in javascript or ruby; they load the entire JSON/YAML file
+into memory, convert it – also in memory – and then print
+the result.
+Thus the memory requirement of these programs is greater
+than the size of the input file plus the size of the output
+file.
+Given large files, these often run out of memory.
+
+This project utilizes a streaming approach: Reading data,
+conversion and writing the output are all done in parallel,
+using the same amount of memory, regardless how large the
+input file is. The memory requirement is constant around 3MB
+for converting either json or yaml files of arbitrary size.
+
+NOTE: yaml2json and json2yaml still need to read each node
+in whole, so if you have a 20MB base64 encoded file in your
+json, this will need to be red into memory as one piece.
 
 ## Installation
 
@@ -54,27 +75,6 @@ pv < myfile.json | json2yaml > myfile.yaml
 yaml2json < myfile.yaml | less
 json2yaml < myfile.json | less
 ```
-
-## Why?
-
-Most of the yaml/json conversion tools I found where written
-in javascript or ruby; they load the entire JSON/YAML file
-into memory, convert it – also in memory – and then print
-the result.
-Thus the memory requirement of these programs is greater
-than the size of the input file plus the size of the output
-file.
-Given large files, these often run out of memory.
-
-This project utilizes a streaming approach: Reading data,
-conversion and writing the output are all done in parallel,
-using the same amount of memory, regardless how large the
-input file is. The memory requirement is constant around 3MB
-for converting either json or yaml files of arbitrary size.
-
-NOTE: yaml2json and json2yaml still need to read each node
-in whole, so if you have a 20MB base64 encoded file in your
-json, this will need to be red into memory as one piece.
 
 ## Status
 
