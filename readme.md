@@ -11,14 +11,49 @@ the future.
 
 ## Installation
 
-Make sure you have the git submodules checked out and then
-run:
+Install the required packages:
+
+- build-essential
+- git
+
+Make sure you have the git submodules checked out:
+
+```
+git submodule init && git submodule sync && git submodule update
+```
+
+And then compile the code:
 
 ```
 make
 ```
 
-To install copy the binaries to /usr/bin/local.
+To install copy the binaries to /usr/local/bin or execute this command
+which will perform the copy for you.
+
+```
+sudo make install
+```
+
+You can supply `$PREFIX` to use a different installation directory; the
+default prefix is `/usr/local.`aaaa
+
+## Usage
+
+```
+# Convert between yaml & json
+yaml2json < myfile.yaml > myfile.json
+json2yaml < myfile.json > myfile.yaml
+
+# For very long files you might want a progress bar
+# (The pv command needs to be installed)
+pv < myfile.yaml | yaml2json > myfile.json
+pv < myfile.json | json2yaml > myfile.yaml
+
+# You can also view the json/yaml directly without a temporary file
+yaml2json < myfile.yaml | less
+json2yaml < myfile.json | less
+```
 
 ## Why?
 
@@ -39,22 +74,17 @@ for converting either json or yaml files of arbitrary size.
 
 NOTE: yaml2json and json2yaml still need to read each node
 in whole, so if you have a 20MB base64 encoded file in your
-json, this will need to be red into memory in whole.
+json, this will need to be red into memory as one piece.
 
 ## Status
 
-This project seems to be working, but it is not extensively
-tested and definitely needs unit tests.
+Stable: This project has been in use for three years without a majour bug.
 
-This should be working well enough for personal used, but
-I do not recommend employing it in a production environment.
-
-# LICENSE
+# LICENSE (Revised BSD)
 
 Written by (karo@cupdev.net) Karolin Varner.
-You can still buy me a Club Mate. Or a coffee.
 
-Copyright © (c) 2016, Karolin Varner.
+Copyright © (c) 2016-2019, Karolin Varner.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
