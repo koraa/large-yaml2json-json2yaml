@@ -9,7 +9,7 @@ anchors, NaN, Infinity or tags are not supported, but
 a sensible, configurable handling of those may be added in
 the future.
 
-*Stability*: Stable – This project has been in use for three years without a majour bug.
+**Stability**: Stable – This project has been in use for three years without a majour bug.
 
 ## Motivation
 
