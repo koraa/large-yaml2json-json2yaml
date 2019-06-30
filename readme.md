@@ -11,6 +11,11 @@ the future.
 
 **Stability**: Stable – This project has been in use for three years without a majour bug.
 
+1. [Motivation](#motivation)
+2. [Usage](#usage)
+3. [Installation](#installation)
+4. [License](#license)
+
 ## Motivation
 
 Most of the yaml/json conversion tools I found where written
@@ -31,6 +36,23 @@ for converting either json or yaml files of arbitrary size.
 NOTE: yaml2json and json2yaml still need to read each node
 in whole, so if you have a 20MB base64 encoded file in your
 json, this will need to be red into memory as one piece.
+
+## Usage
+
+```sh
+# Convert between yaml & json
+yaml2json < myfile.yaml > myfile.json
+json2yaml < myfile.json > myfile.yaml
+
+# For very long files you might want a progress bar
+# (The pv command needs to be installed)
+pv < myfile.yaml | yaml2json > myfile.json
+pv < myfile.json | json2yaml > myfile.yaml
+
+# You can also view the json/yaml directly without a temporary file
+yaml2json < myfile.yaml | less
+json2yaml < myfile.json | less
+```
 
 ## Installation
 
@@ -61,24 +83,9 @@ sudo make install
 You can supply `$PREFIX` to use a different installation directory; the
 default prefix is `/usr/local.`aaaa
 
-## Usage
+# License
 
-```sh
-# Convert between yaml & json
-yaml2json < myfile.yaml > myfile.json
-json2yaml < myfile.json > myfile.yaml
-
-# For very long files you might want a progress bar
-# (The pv command needs to be installed)
-pv < myfile.yaml | yaml2json > myfile.json
-pv < myfile.json | json2yaml > myfile.yaml
-
-# You can also view the json/yaml directly without a temporary file
-yaml2json < myfile.yaml | less
-json2yaml < myfile.json | less
-```
-
-# LICENSE (Revised BSD)
+This is the revised BSD licence.
 
 Written by (karo@cupdev.net) Karolin Varner.
 
